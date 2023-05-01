@@ -1,0 +1,105 @@
+OBJECT ORIENTED PROGRAMMING 
+- combine a grp of related variables (properties) & functions (methods) into a unit (called object)
+
+// ----------------------------------------------------------------------------------------
+1. ENCAPSULATION
+// ----------------------------------------------------------------------------------------
+- group related variables & functions into objects 
+- HIDING implementation details and PROTECTING code from random access
+- all the setting of variables of a class is inside 
+
+// ----------------------------------------------------------------------------------------
+2. ABSTRACTION
+// ----------------------------------------------------------------------------------------
+- hide some properties & methods from the outside
+- make simpler interface 
+- reduce the impact of change 
+
+// ----------------------------------------------------------------------------------------
+3. INHERITANCE 
+// ----------------------------------------------------------------------------------------
+- eliminate redundant code 
+- put the duplicate codes in the main file and extend it to different files 
+- keyword: extends Mouse(main class file)
+
+- Code: 
+  class Animal {
+    String color;
+  }
+
+  public class Cat extends Animal {
+    void meow() {
+        System.out.println("Meow");
+    }
+  }
+
+// ----------------------------------------------------------------------------------------
+4. POLYMORPHISM 
+// ----------------------------------------------------------------------------------------
+- many forms 
+- get rid of if/else or switch statements 
+
+
+// ----------------------------------------------------------------------------------------
+// INTERFACE
+// ----------------------------------------------------------------------------------------
+- helps to keep track of what u need in a glance 
+- store the classes in the main class 
+
+- Code: 
+
+  interface BottleInterface {
+    String color = "Blue";
+    void fillUp();
+    void pourOut();
+  }
+
+  public class InterfaceExample implements BottleInterface {
+
+    public static void main (String[] args) {
+        System.out.println(color);
+        InterfaceExample ex = new InterfaceExample();
+        ex.fillUp();
+    }
+
+    public void fillUp() {
+        System.out.println("It is filled.);
+    }
+
+     public void pourOut() {
+        System.out.println("It is poured out.);
+    }
+  } 
+
+  // ----------------------------------------------------------------------------------------
+  // ABSTRACT CLASS
+  // ----------------------------------------------------------------------------------------
+  - a bunch of variables and methods used to create other classes
+
+  // GETTERS AND SETTERS
+  - Setters : set within the parameters to the variables 
+  - Getters : get the variable 
+
+  public class Account {
+    String name;
+    int age;
+
+    public static void main(String[] args) {
+        Account a = new Account();
+        a.setName("Pablo");
+        system.out.println(a.getName());
+        a.printDetails();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void printDetails() {
+        System.out.println(getName() + " " + age)
+    }
+  }
