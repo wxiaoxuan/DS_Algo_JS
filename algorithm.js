@@ -81,6 +81,24 @@ function binarySearch(array, value) {
   return array[mid] === value ? mid : false;
 }
 
+var search = function(nums, target) {
+  let start = 0;
+  let end = nums.length - 1;
+ 
+ while (start <= end) {
+     let mid = Math.floor((start + end) / 2);
+
+     if (nums[mid] === target) {
+         return mid;
+     } else if (nums[mid] < target) {
+         start = mid + 1;
+     } else {
+         end = mid - 1;
+     }
+ }
+ return -1;
+}; 
+
 // console.log("BINARY SEARCH");
 // console.log("=====================================");
 // console.log(binarySearch([1, 2, 3, 4, 5], 2));
@@ -139,6 +157,7 @@ function naiveSearch(long, short) {
 // BUBBLE SORT
 // ====================================================================================
 // 3 2 1 4 8 5
+
 // step 1: compare index 0 & 1, -> 1 & 2, 2 & 3, 3 & 4, till end
 // repeat step 1 till everything is sorted out
 // Conclusion: sorted based on Biggest to Smallest
@@ -169,18 +188,20 @@ const swap2015 = (arr, index1, index2) => {
 
 function bubbleSort(arr) {
   let noSwaps;
+  // on each iteration of the outer loop, the largest element "bubbles up" to the end of the array, so we can safely ignore it in the next iteration.
   for (let i = arr.length; i > 0; i--) {
     noSwaps = true;
+    //  iterates over the unsorted part of the array, swapping adjacent elements if they are in the wrong order.
     for (let j = 0; j < i - 1; j++) {
       // compare the 2 numbers, if the L num is bigger than R num, swap.
       if (arr[j] > arr[j + 1]) {
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        noSwaps = false;
+        noSwaps = false; // optimize the algorithm by breaking out of the loop early if no swaps were made 
       }
     }
-    if (noSwaps) break;
+    if (noSwaps) break; 
   }
   return arr;
 }

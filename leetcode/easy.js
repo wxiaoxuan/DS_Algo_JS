@@ -348,3 +348,117 @@ var climbStairs = function(n) {
     }
     return prev1;
 }; 
+
+// =========================================================================================================================
+// 2D ARRAY
+// =========================================================================================================================
+// Print the largest (maximum) hourglass sum found in .
+
+function hourglassSum(arr) {
+    let vals = [];
+    let sum;
+    for(let i = 0; i < arr[0].length - 2; i++) {
+        for(let j = 0; j < arr.length - 2; j++) {
+            console.log(arr.length);
+            let sum =   arr[j][i] + arr[j][i + 1] + arr[j][i + 2]
+                                      + arr[j + 1][i + 1] +
+                        arr[j + 2][i] + arr[j + 2][i + 1] + arr[j + 2][i + 2];
+            vals.push(sum);
+        }
+    }
+    return Math.max(...vals);
+}
+
+// int multi_dim[2][3];
+// 2 row, 3 col
+
+function hourglassSum(arr) {
+    // Write your code here
+    let maxSum = [];
+    // column
+    for (let i = 0; i < arr.length - 2; i++) {
+        // row
+        for (let j = 0; j < arr[i].length - 2; j++) {
+            let sum =   arr[j][i] + arr[j][i + 1] + arr[j][i + 2]
+                                      + arr[j + 1][i + 1] +
+                        arr[j + 2][i] + arr[j + 2][i + 1] + arr[j + 2][i + 2];
+            
+            maxSum.push(sum);
+        }
+    }
+    console.log(maxSum);
+    return Math.max(...maxSum);
+}
+
+// =========================================================================================================================
+// CONTAINS DUPLICATE 
+// =========================================================================================================================
+// Given an integer array nums, return true if any value appears at least twice in the array, 
+// and return false if every element is distinct.
+
+// Example 1:
+// Input: nums = [1,2,3,1]
+// Output: true
+
+// Example 2:
+// Input: nums = [1,2,3,4]
+// Output: false
+
+// Example 3:
+// Input: nums = [1,1,1,3,3,4,3,2,4,2]
+// Output: true
+
+function containsDuplicate(nums) {
+    let set = new Set(); // Each value can only occur once in a Set.
+    for (let num of nums) {
+      if (set.has(num)) {
+        return true;
+      }
+      set.add(num);
+    }
+    return false;
+  }
+  
+
+// Sort Array by Increasing Frequency
+
+// Given an array of integers nums, sort the array in increasing order based on the frequency of the values. 
+// If multiple values have the same frequency, sort them in decreasing order.
+// Return the sorted array.
+
+// Example 1:
+// Input: nums = [1,1,2,2,2,3]
+// Output: [3,1,1,2,2,2]
+// Explanation: '3' has a frequency of 1, '1' has a frequency of 2, and '2' has a frequency of 3.
+
+// Example 2:
+// Input: nums = [2,3,1,3,2]
+// Output: [1,3,3,2,2]
+// Explanation: '2' and '3' both have a frequency of 2, so they are sorted in decreasing order.
+
+// Example 3:
+// Input: nums = [-1,1,-6,4,5,-6,1,4,1]
+// Output: [5,-1,4,4,-6,-6,1,1,1]
+
+function frequencySort(nums) {
+    // Count the frequency of each element
+    const freqCount = {};
+    for (let num of nums) {
+      if (num in freqCount) {
+        freqCount[num]++; // if it is already in the freqCount object, increment
+      } else {
+        freqCount[num] = 1;
+      }
+    }
+  
+    // Sort the array based on the frequency count of each element
+    nums.sort((a, b) => {
+      if (freqCount[a] !== freqCount[b]) {
+        return freqCount[a] - freqCount[b];
+      } else {
+        return a - b;
+      }
+    });
+  
+    return nums;
+  }
