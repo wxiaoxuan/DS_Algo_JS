@@ -1,0 +1,83 @@
+remove duplicates 
+   
+ let set = new Set(); // each value can occur once in the set 
+    let output = "";
+
+    for (let i = 0; i < input1.length; i++) {
+        if (!set.has(input1[i])) {
+            set.add(input1[i])
+            output += input1[i];
+        }
+    }
+
+    return output;
+
+
+run walk and run 
+    if (input1 <= 1) return 1;
+
+    let old1 = 1;
+    let old2 = 1;
+
+    for (let i = 2; i <= input1; i++) {
+        let current = old1 + old2;
+        old2 = old1;
+        old1 = current;
+    }
+    return old1;
+
+
+
+Max Contiguous Sequences 
+- return max sum of sub-sequence of numbers 
+
+// Input parameters are : 
+       // input1 As Number eg:- 23  
+       // input2 As javascript Array() of type Number eg. var array = new Array() 
+    
+	// Expected return type  : 
+       // output1 As Number eg:- 23
+    // Write code here...
+
+    // length = 5
+    // [1,2,3,4,5]
+    //  0 1 2 3 4
+    // for (let i = 0; i < input2.length; i++)
+
+    // input1 : length of array eg. 5
+    // input2: array [1,2,3,4,5]
+    // 1. find sum of elements in each sub-sequence
+    // 2. compare sub-sequence
+    // 3. output max sum value
+
+    // loop thru the array and add all the positive integers 
+    // if negative value appears, break; [1,2,4] 
+    // ignore negative value [-2]
+    // form a new sub-sequence array affter the negative value
+    // repeat the steps above till end. 
+
+
+// Input parameters are : 
+       // input1 As Number eg:- 23  
+       // input2 As javascript Array() of type Number eg. var array = new Array() 
+    
+	// Expected return type  : 
+       // output1 As Number eg:- 23
+    // Write code here...
+
+    // length = 5
+    // [1,2,3,4,5]
+    //  0 1 2 3 4
+    // for (let i = 0; i < input2.length; i++)
+
+    // input1 : length of array eg. 5
+    // input2: array [1,2,3,4,5]
+    // 1. find sum of elements in each sub-sequence
+    // 2. compare sub-sequence
+    // 3. output max sum value
+
+    // loop thru the array and add all the positive integers 
+    // if negative value appears, break; [1,2,4] 
+    // ignore negative value [-2]
+    // form a new sub-sequence array affter the negative value
+    // repeat the steps above till end. 

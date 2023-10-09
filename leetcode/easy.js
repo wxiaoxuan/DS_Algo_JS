@@ -1,16 +1,15 @@
-
 // 1. CHECK DISTANCES BTW SAME LETTERS
-// 2. TWO SUMS 
+// 2. TWO SUMS
 // 3. Find All Numbers Disappeared in an Array
 // 4. Best Time to Buy and Sell Stock
-// 5. Binary Search 
-// 6. CLIMBING STAIRS 
+// 5. Binary Search
+// 6. CLIMBING STAIRS
 
 // =========================================================================================================================
 // CHECK DISTANCES BTW SAME LETTERS
 // =========================================================================================================================
 
-// You are given a 0-indexed string s consisting of only lowercase English letters, where each letter in s appears exactly twice. 
+// You are given a 0-indexed string s consisting of only lowercase English letters, where each letter in s appears exactly twice.
 // You are also given a 0-indexed integer array distance of length 26.
 // Each letter in the alphabet is numbered from 0 to 25 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, ... , 'z' -> 25).
 // In a well-spaced string, the number of letters between the two occurrences of the ith letter is distance[i]. If the ith letter does not appear in s, then distance[i] can be ignored.
@@ -54,39 +53,37 @@
  * @return {boolean}
  */
 
-var checkDistances = function(s, distance) {
-    // to keep track of the first occurrence of each letter in the string
-    let indices = new Array(26); 
-    indices.fill(-1); // set each element to -1 initially
+var checkDistances = function (s, distance) {
+  // to keep track of the first occurrence of each letter in the string
+  let indices = new Array(26);
+  indices.fill(-1); // set each element to -1 initially
 
-    // store the indices of the letters in the string 
-    for (let i =0; i < s.length; i++) {
-        const alphabetIndex = s.charCodeAt(i) - 'a'.charCodeAt(0);
-        // store the index of the character in the array 
-        if (indices[alphabetIndex] === -1) {
-            indices[alphabetIndex] = i;
-        } else {
-            //calculates the distance between the two occurrences of the letter
-            const dist = i - indices[alphabetIndex] - 1;
-            // if distance dont match, return false 
-            if (dist !== distance[alphabetIndex]) {
-                return false;
-            }
-            indices[alphabetIndex] = -1; // if distance match, reset the letter to -1 again 
-        }
+  // store the indices of the letters in the string
+  for (let i = 0; i < s.length; i++) {
+    const alphabetIndex = s.charCodeAt(i) - "a".charCodeAt(0);
+    // store the index of the character in the array
+    if (indices[alphabetIndex] === -1) {
+      indices[alphabetIndex] = i;
+    } else {
+      //calculates the distance between the two occurrences of the letter
+      const dist = i - indices[alphabetIndex] - 1;
+      // if distance dont match, return false
+      if (dist !== distance[alphabetIndex]) {
+        return false;
+      }
+      indices[alphabetIndex] = -1; // if distance match, reset the letter to -1 again
     }
+  }
 
-    // check if any letter in the string is not paired 
-    for (let i = 0; i < indices.length; i++) {
-        if (indices[i] !== -1) {
-            return false;
-        }
+  // check if any letter in the string is not paired
+  for (let i = 0; i < indices.length; i++) {
+    if (indices[i] !== -1) {
+      return false;
     }
-    
-    return true;
+  }
+
+  return true;
 };
-
-
 
 // =========================================================================================================================
 // TWO SUMS
@@ -125,28 +122,28 @@ var checkDistances = function(s, distance) {
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-    const map = new Map(); // initialise empty hash map
-    
-    // loops thru nums array
-    for (let i = 0; i < nums.length; i++) {
-        // calc the diff btw the target and the current element
-        const difference = target - nums[i];
-       // found 2 elements that add up to target 
-        if (map.has(difference)) {
-            return [map.get(difference), i]; // return indices as array
-        }
-         // store the current element & its index (diff) into the map
-        map.set(nums[i], i);  
+var twoSum = function (nums, target) {
+  const map = new Map(); // initialise empty hash map
+
+  // loops thru nums array
+  for (let i = 0; i < nums.length; i++) {
+    // calc the diff btw the target and the current element
+    const difference = target - nums[i];
+    // found 2 elements that add up to target
+    if (map.has(difference)) {
+      return [map.get(difference), i]; // return indices as array
     }
-    return []; // return empty array, no pair add up to the target 
+    // store the current element & its index (diff) into the map
+    map.set(nums[i], i);
+  }
+  return []; // return empty array, no pair add up to the target
 };
 
 // =========================================================================================================================
 // Find All Numbers Disappeared in an Array
 // =========================================================================================================================
 
-// Given an array nums of n integers where nums[i] is in the range [1, n], 
+// Given an array nums of n integers where nums[i] is in the range [1, n],
 // return an array of all the integers in the range [1, n] that do not appear in nums.
 
 // --------------------------------------------------------------------------------------------------------------------------
@@ -160,7 +157,7 @@ var twoSum = function(nums, target) {
 // --------------------------------------------------------------------------------------------------------------------------
 // Input: nums = [1,1]
 // Output: [2]
- 
+
 // --------------------------------------------------------------------------------------------------------------------------
 // Constraints:
 // --------------------------------------------------------------------------------------------------------------------------
@@ -177,18 +174,17 @@ var twoSum = function(nums, target) {
  * @param {number[]} nums
  * @return {number[]}
  */
-var findDisappearedNumbers = function(nums) {
-    let numsArray = [];
+var findDisappearedNumbers = function (nums) {
+  let numsArray = [];
 
-    for (let i = 1; i < nums.length + 1; i++) {
-        if (!nums.includes(i)) {
-            numsArray.push(i);
-        }
+  for (let i = 1; i < nums.length + 1; i++) {
+    if (!nums.includes(i)) {
+      numsArray.push(i);
     }
+  }
 
-    return numsArray;
+  return numsArray;
 };
-
 
 // =========================================================================================================================
 // Best Time to Buy and Sell Stock
@@ -211,7 +207,7 @@ var findDisappearedNumbers = function(nums) {
 // Input: prices = [7,6,4,3,1]
 // Output: 0
 // Explanation: In this case, no transactions are done and the max profit = 0.
- 
+
 // --------------------------------------------------------------------------------------------------------------------------
 // Constraints:
 // --------------------------------------------------------------------------------------------------------------------------
@@ -226,27 +222,24 @@ var findDisappearedNumbers = function(nums) {
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
-    let minPrice = Number.MAX_VALUE;
-    let maxProfit = 0;
+var maxProfit = function (prices) {
+  let minPrice = Number.MAX_VALUE;
+  let maxProfit = 0;
 
-    for (let i = 0; i < prices.length; i++) {
-        if (prices[i] < minPrice) {
-            minPrice = prices[i];
-        } else if (prices[i] - minPrice > maxProfit) {
-            maxProfit = prices[i] - minPrice;
-        }
+  for (let i = 0; i < prices.length; i++) {
+    if (prices[i] < minPrice) {
+      minPrice = prices[i];
+    } else if (prices[i] - minPrice > maxProfit) {
+      maxProfit = prices[i] - minPrice;
     }
-    return maxProfit;
-
-   
+  }
+  return maxProfit;
 };
 
-
 // =========================================================================================================================
-// BINARY SEARCH 
+// BINARY SEARCH
 // =========================================================================================================================
-// Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. 
+// Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums.
 // If target exists, then return its index. Otherwise, return -1.
 // You must write an algorithm with O(log n) runtime complexity.
 
@@ -277,27 +270,26 @@ var maxProfit = function(prices) {
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
-    let start = 0;
-    let end = nums.length - 1;
-   
-   while (start <= end) {
-       let mid = Math.floor((start + end) / 2);
+var search = function (nums, target) {
+  let start = 0;
+  let end = nums.length - 1;
 
-       if (nums[mid] === target) {
-           return mid;
-       } else if (nums[mid] < target) {
-           start = mid + 1;
-       } else {
-           end = mid - 1;
-       }
-   }
-   return -1;
-}; 
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
 
+    if (nums[mid] === target) {
+      return mid;
+    } else if (nums[mid] < target) {
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+  return -1;
+};
 
 // =========================================================================================================================
-// CLIMBING STAIRS 
+// CLIMBING STAIRS
 // =========================================================================================================================
 
 /*You are climbing a staircase. It takes n steps to reach the top.
@@ -337,17 +329,18 @@ Constraints:
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
-    if (n <= 1) return 1;
-    let prev1 = 1, prev2 = 1;
+var climbStairs = function (n) {
+  if (n <= 1) return 1;
+  let prev1 = 1,
+    prev2 = 1;
 
-    for (let i = 2; i <= n; i++) {
-        const current = prev1 + prev2;
-        prev2 = prev1;
-        prev1 = current;
-    }
-    return prev1;
-}; 
+  for (let i = 2; i <= n; i++) {
+    const current = prev1 + prev2;
+    prev2 = prev1;
+    prev1 = current;
+  }
+  return prev1;
+};
 
 // =========================================================================================================================
 // 2D ARRAY
@@ -355,45 +348,55 @@ var climbStairs = function(n) {
 // Print the largest (maximum) hourglass sum found in .
 
 function hourglassSum(arr) {
-    let vals = [];
-    let sum;
-    for(let i = 0; i < arr[0].length - 2; i++) {
-        for(let j = 0; j < arr.length - 2; j++) {
-            console.log(arr.length);
-            let sum =   arr[j][i] + arr[j][i + 1] + arr[j][i + 2]
-                                      + arr[j + 1][i + 1] +
-                        arr[j + 2][i] + arr[j + 2][i + 1] + arr[j + 2][i + 2];
-            vals.push(sum);
-        }
+  let vals = [];
+  let sum;
+  for (let i = 0; i < arr[0].length - 2; i++) {
+    for (let j = 0; j < arr.length - 2; j++) {
+      console.log(arr.length);
+      let sum =
+        arr[j][i] +
+        arr[j][i + 1] +
+        arr[j][i + 2] +
+        arr[j + 1][i + 1] +
+        arr[j + 2][i] +
+        arr[j + 2][i + 1] +
+        arr[j + 2][i + 2];
+      vals.push(sum);
     }
-    return Math.max(...vals);
+  }
+  return Math.max(...vals);
 }
 
 // int multi_dim[2][3];
 // 2 row, 3 col
 
 function hourglassSum(arr) {
-    // Write your code here
-    let maxSum = [];
-    // column
-    for (let i = 0; i < arr.length - 2; i++) {
-        // row
-        for (let j = 0; j < arr[i].length - 2; j++) {
-            let sum =   arr[j][i] + arr[j][i + 1] + arr[j][i + 2]
-                                      + arr[j + 1][i + 1] +
-                        arr[j + 2][i] + arr[j + 2][i + 1] + arr[j + 2][i + 2];
-            
-            maxSum.push(sum);
-        }
+  // Write your code here
+  let maxSum = [];
+  // column
+  for (let i = 0; i < arr.length - 2; i++) {
+    // row
+    for (let j = 0; j < arr[i].length - 2; j++) {
+      let sum =
+        arr[j][i] +
+        arr[j][i + 1] +
+        arr[j][i + 2] +
+        arr[j + 1][i + 1] +
+        arr[j + 2][i] +
+        arr[j + 2][i + 1] +
+        arr[j + 2][i + 2];
+
+      maxSum.push(sum);
     }
-    console.log(maxSum);
-    return Math.max(...maxSum);
+  }
+  console.log(maxSum);
+  return Math.max(...maxSum);
 }
 
 // =========================================================================================================================
-// CONTAINS DUPLICATE 
+// CONTAINS DUPLICATE
 // =========================================================================================================================
-// Given an integer array nums, return true if any value appears at least twice in the array, 
+// Given an integer array nums, return true if any value appears at least twice in the array,
 // and return false if every element is distinct.
 
 // Example 1:
@@ -409,20 +412,19 @@ function hourglassSum(arr) {
 // Output: true
 
 function containsDuplicate(nums) {
-    let set = new Set(); // Each value can only occur once in a Set.
-    for (let num of nums) {
-      if (set.has(num)) {
-        return true;
-      }
-      set.add(num);
+  let set = new Set(); // Each value can only occur once in a Set.
+  for (let num of nums) {
+    if (set.has(num)) {
+      return true;
     }
-    return false;
+    set.add(num);
   }
-  
+  return false;
+}
 
 // Sort Array by Increasing Frequency
 
-// Given an array of integers nums, sort the array in increasing order based on the frequency of the values. 
+// Given an array of integers nums, sort the array in increasing order based on the frequency of the values.
 // If multiple values have the same frequency, sort them in decreasing order.
 // Return the sorted array.
 
@@ -441,24 +443,24 @@ function containsDuplicate(nums) {
 // Output: [5,-1,4,4,-6,-6,1,1,1]
 
 function frequencySort(nums) {
-    // Count the frequency of each element
-    const freqCount = {};
-    for (let num of nums) {
-      if (num in freqCount) {
-        freqCount[num]++; // if it is already in the freqCount object, increment
-      } else {
-        freqCount[num] = 1;
-      }
+  // Count the frequency of each element
+  const freqCount = {};
+  for (let num of nums) {
+    if (num in freqCount) {
+      freqCount[num]++; // if it is already in the freqCount object, increment
+    } else {
+      freqCount[num] = 1;
     }
-  
-    // Sort the array based on the frequency count of each element
-    nums.sort((a, b) => {
-      if (freqCount[a] !== freqCount[b]) {
-        return freqCount[a] - freqCount[b];
-      } else {
-        return a - b;
-      }
-    });
-  
-    return nums;
   }
+
+  // Sort the array based on the frequency count of each element
+  nums.sort((a, b) => {
+    if (freqCount[a] !== freqCount[b]) {
+      return freqCount[a] - freqCount[b];
+    } else {
+      return a - b;
+    }
+  });
+
+  return nums;
+}
