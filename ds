@@ -1,8 +1,0 @@
-LINKED LIST PSEUDOCODE 
-
-- SHIFT 
-1. if no nodes, return undefined
-2. store current head's property in a variable 
-3. set head property to be current head's next property
-4. decrement length by 1
-5. return value of node removed
